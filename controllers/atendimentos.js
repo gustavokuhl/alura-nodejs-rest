@@ -12,7 +12,12 @@ module.exports = app => {
 
     app.post('/atendimentos', (req, res) => {
         const atendimento = req.body
-
         Atendimento.adiciona(atendimento, res)
+    })
+
+    app.patch('/atendimentos/:id', (req, res) => {
+        const id = parseInt(req.params.id)
+        const valores = req.body
+        Atendimento.altera(res, id, valores)
     })
 }
